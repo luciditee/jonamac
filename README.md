@@ -51,3 +51,7 @@ The alternative is [Basilisk II](https://github.com/cebix/macemu), which focuses
 The community around it has largely just worked around these shortcomings and become numb/adapted to them. While this isn't a huge deal on its own, it's an absolute nightmare for anyone just coming into the hobby. I didn't personally grow up around Macintosh computers, but I was always _extremely_ interested in them due to how they shook the home computer landscape to its core in the mid-80s, and how they were the most Internet-prepared machines you'd find in early 90's households, predating Windows 95. However, I had to learn the hard way that things aren't always so simple with these machines, as they may be with old DOS machines.
 
 The fact of the matter is, to work with any old Mac hardware, an absurd amount of bootstrapping is required to get from "acquire a retro Macintosh computer" to "effectively use the retro Macintosh computer," and not everyone is effectively prepared to do this.
+
+This emulator is me trying to reconcile *why* these things are difficult to write, and if they aren't as difficult as initially appraised, perhaps it'll turn into something nice. What I'd like for it to be is an emulator that doesn't make me hate myself to use it, and in terms of blue-sky, I'd like it to be a multitool for people who are emulating old machines so as to interface with actual, physical old machines (i.e. generating hard disk images).
+
+Hopefully it works out. It probably won't, because the ASD-brain will burn out... eventually. Let's see where things end up!
