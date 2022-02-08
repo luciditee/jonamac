@@ -1,0 +1,19 @@
+# tell git to ignore everything
+# then tell it to unignore directories
+# then tell it to unignore things with an extension
+# this excludes any generated test binaries
+*
+!*/
+!*.*
+!Makefile
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+jonamac
+*.o
+*.ROM
