@@ -26,13 +26,15 @@ typedef struct cmdline_flag_prim {
 
 /* pseudo-globals for this unit */
 char* rom_filename = NULL;
-emu_mem_t rom_address = 0;
-extern emu_mem_t staged_mem_size;
+char* monitor_resp = NULL;
+emu_size_t rom_address = 0;
+extern emu_size_t staged_mem_size;
 
 /* command line arg function pointers */
 void stage_rom_path(char* path);
 void stage_rom_addr(char* addr_str);
 void stage_memory(char* size_str);
+void enable_monitor(char* val);
 extern bool validate_rom_path();
 extern bool validate_rom_addr();
 extern bool validate_memory();
@@ -47,6 +49,7 @@ void enable_debug(char* ignoreme);
 #define DH_FLAG_PRIM_COUNT 4
 cmdline_flag_dh_prim_t flags[] = {
     { "debug", false, false, enable_debug, NULL, false },
+    { "usemonitor", false, true, enable_monitor, NULL, false },
     { "mem", true, true, stage_memory, validate_memory, false },
     { "rom", true, true, stage_rom_path, validate_rom_path, false  },
     { "addr", true, true, stage_rom_addr, validate_rom_addr, false }
@@ -121,12 +124,16 @@ void stage_rom_path(char* path) {
 
 void stage_rom_addr(char* addr_str) {
     unsigned long ul_value = strtoul(addr_str, NULL, 16);
-    rom_address = (emu_mem_t)ul_value;
+    rom_address = (emu_size_t)ul_value;
     return;
 }
 
 void stage_memory(char* size_str) {
-    staged_mem_size = (emu_mem_t)atoi(size_str);
+    staged_mem_size = (emu_size_t)atoi(size_str);
+}
+
+void enable_monitor(char* val) {
+    monitor_resp = val;
 }
 
 int process_args(int argc, char *argv[]) {

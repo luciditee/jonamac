@@ -4,12 +4,16 @@ An early Macintosh emulator, named for the Jonamac apple variety. Heavy work in 
 
 ## License & Acknowledgements
 
-Released under the Mozilla Public License (see `LICENSE` for details). Incorporates the [Musashi](https://github.com/kstenerud/Musashi) 680x0 CPU emulator, which is available under the MIT license.
+Released under the Modified BSD License (see `LICENSE` for details). Incorporates the following:
+
+* The [Musashi](https://github.com/kstenerud/Musashi) 680x0 CPU emulator, which is available under the MIT license. (Statically linked into the binary; included in this repository.)
+* [SDL2](https://github.com/libsdl-org/SDL), which is available under the zlib license. (Dynamically linked, not in this repository.)
+* [ncurses](https://github.com/mirror/ncurses), which is available under the X11 license. (Dynamically linked, not in this repository.)
 
 ## Building
 ### Prerequisites
 
-A recent version of gcc or clang should be enough, along with your respective system's C math library. You should also have GNU Make installed.
+A recent version of binutils + gcc or clang should be enough, along with your respective system's C math library, SDL2 (`libsdl2-dev` on Debian-based machines), and ncurses (`ncurses-dev` on Debian-likes). You should also have GNU Make installed. If you've successfully compiled C programs on a *nix machine before, you probably have everything you need.
 
 ### Compiling
 A simple `make` suffices. Remove stray object files with `make clean`. No `make install` is supplied yet as the program is not yet considered stable.

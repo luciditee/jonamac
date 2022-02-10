@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "emusys.h": "c"
+        "emusys.h": "c",
+        "emu_rom.h": "c",
+        "emu_global.h": "c",
+        "stdint.h": "c",
+        "emu_mac128k.h": "c"
     }
 }

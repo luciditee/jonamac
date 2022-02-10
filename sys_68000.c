@@ -6,7 +6,7 @@
 #include <emu_cpu.h>
 
 void cpu(initialize) (emu_memory_t* mem) {
-    /* for memory_init to work, memory_staged_size must be set
+    /* for memory_init to not segfault, memory_staged_size must be set
        in sys_global.c. typically done as cmdline args */
     mem = emu_memory_init();
     set_memory_context(mem);

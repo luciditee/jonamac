@@ -5,8 +5,7 @@
 #include <emu_rom.h>
 
 extern char* rom_filename;
-extern emu_mem_t rom_address;
-extern emu_mem_t staged_mem_size;
+extern emu_size_t staged_mem_size;
 emu_rom_mask_t* system_rom_mask = NULL;
 emu_byte_t* rom = NULL;
 long rom_size = 0;
@@ -59,12 +58,12 @@ void map_rom() {
 }
 
 /* note: uses systemwide address, not rom-local address */
-emu_byte_t read_rom_byte(emu_mem_t addr) {
-    emu_mem_t addr_adj = addr - system_rom_mask->start_addr;
+emu_byte_t read_rom_byte(emu_size_t addr) {
+    emu_size_t addr_adj = addr - system_rom_mask->start_addr;
     return rom[addr_adj & system_rom_mask->stop_addr];
 }
 
-bool is_rom_addr(emu_mem_t addr) {
+bool is_rom_addr(emu_size_t addr) {
     if (system_rom_mask == NULL)
         return false;
     if (addr < system_rom_mask->start_addr)
@@ -72,7 +71,7 @@ bool is_rom_addr(emu_mem_t addr) {
     return true;
 }
 
-emu_mem_t mask_rom_addr(emu_mem_t addr) {
+emu_size_t mask_rom_addr(emu_size_t addr) {
     if (!is_rom_addr(addr))
         return addr;
     return addr & system_rom_mask->stop_addr;
@@ -82,9 +81,9 @@ bool validate_rom_addr() {
     EMU_DBG("validating rom can be mapped to address:");
     EMU_DBGH(rom_address);
 
-    emu_mem_t size = (staged_mem_size * 1024);
+    emu_size_t size = (staged_mem_size * 1024);
     if (size < rom_size) {
-        EMU_ERRS("rom size totally exceeds emulated address space");
+        EMU_ERRS("rom size bigger than emulated address space");
         return false;
     }
 
